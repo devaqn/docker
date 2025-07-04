@@ -1,16 +1,19 @@
-# Deploy N8N com Redis, Postgres e WAHA no Render
+# Deploy N8N + Redis + Postgres + WAHA no Render
 
 Este projeto contém:
-- `Dockerfile` para executar o n8n
-- `render.yaml` para configurar serviços no Render.com
-- Serviços: n8n, postgres, redis e waha
+- `Dockerfile` para rodar o n8n com suporte ao WAHA
+- `render.yaml` com todos os serviços:
+  - n8n
+  - postgres
+  - redis
+  - waha
 
 ## Como usar
 
-1. Faça push deste repositório no GitHub.
-2. Vá para https://render.com/blueprint e conecte seu repositório.
-3. O Render criará os serviços automaticamente com base no `render.yaml`.
+1. Faça push para um repositório GitHub.
+2. Vá para https://render.com/blueprint
+3. Conecte o repositório. O Render criará todos os serviços automaticamente.
 
 ## Segurança
 
-Altere o usuário e senha definidos nas variáveis de ambiente do n8n!
+Altere as senhas e variáveis padrão no painel do Render!
