@@ -1,11 +1,7 @@
-# Use a imagem oficial mais recente do n8n
-FROM n8n.io/n8n
+FROM docker.io/n8nio/n8n:1.47.1
 
-# Expõe a porta que o n8n usa
+WORKDIR /data
+
 EXPOSE 5678
 
-# Define o diretório de trabalho
-WORKDIR /home/node/
-
-# Comando para iniciar o n8n
-CMD ["n8n", "start"]
+ENV GENERIC_TIMEZONE=America/Sao_Paulo

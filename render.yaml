@@ -1,0 +1,59 @@
+services:
+  - type: web
+    name: n8n
+    env: docker
+    repo: https://github.com/devaqn/docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: true
+      - key: N8N_BASIC_AUTH_USER
+        value: admin
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: admin123
+      - key: N8N_HOST
+        value: 0.0.0.0
+      - key: GENERIC_TIMEZONE
+        value: America/Sao_Paulo
+      - key: N8N_LOG_LEVEL
+        value: debug
+      - key: WEBHOOK_URL
+        value: http://host.docker.internal:5678
+
+  - type: private-service
+    name: postgres
+    env: docker
+    image: postgres:latest
+    plan: free
+    envVars:
+      - key: POSTGRES_USER
+        value: default
+      - key: POSTGRES_PASSWORD
+        value: default
+      - key: POSTGRES_DB
+        value: default
+
+  - type: private-service
+    name: redis
+    env: docker
+    image: redis:latest
+    plan: free
+    envVars:
+      - key: REDIS_USER
+        value: default
+      - key: REDIS_PASSWORD
+        value: default
+
+  - type: private-service
+    name: waha
+    env: docker
+    image: devlikeapro/waha:latest
+    plan: free
+    envVars:
+      - key: WHATSAPP_HOOK_URL
+        value: http://host.docker.internal:5678/webhook/webhook
+      - key: WHATSAPP_DEFAULT_ENGINE
+        value: GOWS
+      - key: WHATSAPP_HOOK_EVENTS
+        value: message
